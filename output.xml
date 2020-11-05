@@ -1,14 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.0 on win32)" generated="20201105 14:34:03.156" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.7.0 on win32)" generated="20201105 16:42:21.195" rpa="false">
 <suite id="s1" name="Autotest" source="D:\gitee.io\itrack\robotframework-bee\autotest">
 <suite id="s1-s1" name="支付中心" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心">
-<suite id="s1-s1-s1" name="支付核心" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\支付核心">
-<suite id="s1-s1-s1-s1" name="余额模拟扣款" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\支付核心\余额模拟扣款">
-<suite id="s1-s1-s1-s1-s1" name="1、参数校验" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\支付核心\余额模拟扣款\1、参数校验.robot">
-<test id="s1-s1-s1-s1-s1-t1" name="1.1 customerId为空查询模拟扣款，返回customerId不能为空">
+<suite id="s1-s1-s1" name="充值单" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\充值单">
+<suite id="s1-s1-s1-s1" name="修改充值单发票信息" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\充值单\修改充值单发票信息">
+<suite id="s1-s1-s1-s1-s1" name="1、参数校验" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\充值单\修改充值单发票信息\1、参数校验.robot">
+<test id="s1-s1-s1-s1-s1-t1" name="1.1 depositId为空修改发票数据，返回修改失败，depositId不能为空">
 <kw name="Init Step" library="bee">
-<msg timestamp="20201105 14:34:04.112" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
-<status status="PASS" starttime="20201105 14:34:03.936" endtime="20201105 14:34:04.112"></status>
+<msg timestamp="20201105 16:42:25.616" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
+<status status="PASS" starttime="20201105 16:42:25.296" endtime="20201105 16:42:25.617"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>/opc/v1/deposit/updateInvoice</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20201105 16:42:25.617" level="INFO">${uri} = /opc/v1/deposit/updateInvoice</msg>
+<status status="PASS" starttime="20201105 16:42:25.617" endtime="20201105 16:42:25.617"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>100</arg>
+</arguments>
+<assign>
+<var>${depositAmount}</var>
+</assign>
+<msg timestamp="20201105 16:42:25.618" level="INFO">${depositAmount} = 100</msg>
+<status status="PASS" starttime="20201105 16:42:25.618" endtime="20201105 16:42:25.618"></status>
+</kw>
+<kw name="Create New Deposit">
+<arguments>
+<arg>${depositAmount}</arg>
+<arg>${True}</arg>
+<arg>${False}</arg>
+</arguments>
+<assign>
+<var>${customerName}</var>
+<var>${customerId}</var>
+<var>${accountId}</var>
+<var>${cash_depositId}</var>
+<var>${coupon_depositId}</var>
+</assign>
+<msg timestamp="20201105 16:42:25.620" level="FAIL">No keyword with name 'Create New Deposit' found.</msg>
+<status status="FAIL" starttime="20201105 16:42:25.620" endtime="20201105 16:42:25.620"></status>
+</kw>
+<status status="FAIL" starttime="20201105 16:42:25.294" endtime="20201105 16:42:25.621" critical="yes">No keyword with name 'Create New Deposit' found.</status>
+</test>
+<status status="FAIL" starttime="20201105 16:42:21.344" endtime="20201105 16:42:25.621"></status>
+</suite>
+<status status="FAIL" starttime="20201105 16:42:21.341" endtime="20201105 16:42:25.624"></status>
+</suite>
+<suite id="s1-s1-s1-s2" name="充值单收款" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\充值单\充值单收款">
+<suite id="s1-s1-s1-s2-s1" name="2、功能场景" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\充值单\充值单收款\2、功能场景.robot">
+<test id="s1-s1-s1-s2-s1-t1" name="2.1 存在一个100元未付款的现金充值单，收款100元，返回收款成功，充值单状态变为已支付">
+<kw name="Init Step" library="bee">
+<msg timestamp="20201105 16:42:25.950" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
+<status status="PASS" starttime="20201105 16:42:25.640" endtime="20201105 16:42:25.951"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>/opc/v1/deposit/payDepositBill</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20201105 16:42:25.951" level="INFO">${uri} = /opc/v1/deposit/payDepositBill</msg>
+<status status="PASS" starttime="20201105 16:42:25.951" endtime="20201105 16:42:25.952"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>100</arg>
+</arguments>
+<assign>
+<var>${depositAmount}</var>
+</assign>
+<msg timestamp="20201105 16:42:25.952" level="INFO">${depositAmount} = 100</msg>
+<status status="PASS" starttime="20201105 16:42:25.952" endtime="20201105 16:42:25.952"></status>
+</kw>
+<kw name="Create New Deposit">
+<arguments>
+<arg>${depositAmount}</arg>
+<arg>${true}</arg>
+<arg>${false}</arg>
+<arg>${false}</arg>
+</arguments>
+<assign>
+<var>${customerName}</var>
+<var>${customerId}</var>
+<var>${accountId}</var>
+<var>${cash_depositId}</var>
+<var>${coupon_depositId}</var>
+</assign>
+<msg timestamp="20201105 16:42:25.954" level="FAIL">No keyword with name 'Create New Deposit' found.</msg>
+<status status="FAIL" starttime="20201105 16:42:25.954" endtime="20201105 16:42:25.955"></status>
+</kw>
+<status status="FAIL" starttime="20201105 16:42:25.636" endtime="20201105 16:42:25.955" critical="yes">No keyword with name 'Create New Deposit' found.</status>
+</test>
+<status status="FAIL" starttime="20201105 16:42:25.631" endtime="20201105 16:42:25.956"></status>
+</suite>
+<status status="FAIL" starttime="20201105 16:42:25.626" endtime="20201105 16:42:25.958"></status>
+</suite>
+<status status="FAIL" starttime="20201105 16:42:21.337" endtime="20201105 16:42:25.960"></status>
+</suite>
+<suite id="s1-s1-s2" name="支付核心" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\支付核心">
+<suite id="s1-s1-s2-s1" name="余额模拟扣款" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\支付核心\余额模拟扣款">
+<suite id="s1-s1-s2-s1-s1" name="1、参数校验" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\支付核心\余额模拟扣款\1、参数校验.robot">
+<test id="s1-s1-s2-s1-s1-t1" name="1.1 customerId为空查询模拟扣款，返回customerId不能为空">
+<kw name="Init Step" library="bee">
+<msg timestamp="20201105 16:42:26.287" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
+<status status="PASS" starttime="20201105 16:42:25.974" endtime="20201105 16:42:26.287"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -18,8 +124,8 @@
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20201105 14:34:04.113" level="INFO">${uri} = /opc/v1/pay/simulateDeduct</msg>
-<status status="PASS" starttime="20201105 14:34:04.113" endtime="20201105 14:34:04.113"></status>
+<msg timestamp="20201105 16:42:26.287" level="INFO">${uri} = /opc/v1/pay/simulateDeduct</msg>
+<status status="PASS" starttime="20201105 16:42:26.287" endtime="20201105 16:42:26.288"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -29,8 +135,8 @@
 <assign>
 <var>${customerId}</var>
 </assign>
-<msg timestamp="20201105 14:34:04.114" level="INFO">${customerId} = 1297612423314</msg>
-<status status="PASS" starttime="20201105 14:34:04.113" endtime="20201105 14:34:04.114"></status>
+<msg timestamp="20201105 16:42:26.288" level="INFO">${customerId} = 1297612423314</msg>
+<status status="PASS" starttime="20201105 16:42:26.288" endtime="20201105 16:42:26.288"></status>
 </kw>
 <kw name="Create List" library="BuiltIn">
 <doc>Returns a list containing given items.</doc>
@@ -40,8 +146,8 @@
 <assign>
 <var>${productIdList}</var>
 </assign>
-<msg timestamp="20201105 14:34:04.114" level="INFO">${productIdList} = ['33100']</msg>
-<status status="PASS" starttime="20201105 14:34:04.114" endtime="20201105 14:34:04.114"></status>
+<msg timestamp="20201105 16:42:26.289" level="INFO">${productIdList} = ['33100']</msg>
+<status status="PASS" starttime="20201105 16:42:26.289" endtime="20201105 16:42:26.289"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -51,8 +157,8 @@
 <assign>
 <var>${serviceType}</var>
 </assign>
-<msg timestamp="20201105 14:34:04.115" level="INFO">${serviceType} = 04</msg>
-<status status="PASS" starttime="20201105 14:34:04.115" endtime="20201105 14:34:04.115"></status>
+<msg timestamp="20201105 16:42:26.290" level="INFO">${serviceType} = 04</msg>
+<status status="PASS" starttime="20201105 16:42:26.289" endtime="20201105 16:42:26.290"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -62,8 +168,8 @@
 <assign>
 <var>${amount}</var>
 </assign>
-<msg timestamp="20201105 14:34:04.116" level="INFO">${amount} = 99</msg>
-<status status="PASS" starttime="20201105 14:34:04.115" endtime="20201105 14:34:04.116"></status>
+<msg timestamp="20201105 16:42:26.291" level="INFO">${amount} = 99</msg>
+<status status="PASS" starttime="20201105 16:42:26.290" endtime="20201105 16:42:26.291"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -73,8 +179,8 @@
 <assign>
 <var>${invoiceProperty}</var>
 </assign>
-<msg timestamp="20201105 14:34:04.117" level="INFO">${invoiceProperty} = </msg>
-<status status="PASS" starttime="20201105 14:34:04.116" endtime="20201105 14:34:04.117"></status>
+<msg timestamp="20201105 16:42:26.292" level="INFO">${invoiceProperty} = </msg>
+<status status="PASS" starttime="20201105 16:42:26.292" endtime="20201105 16:42:26.292"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -84,12 +190,12 @@
 <assign>
 <var>${payStrategy}</var>
 </assign>
-<msg timestamp="20201105 14:34:04.117" level="INFO">${payStrategy} = 1</msg>
-<status status="PASS" starttime="20201105 14:34:04.117" endtime="20201105 14:34:04.117"></status>
+<msg timestamp="20201105 16:42:26.293" level="INFO">${payStrategy} = 1</msg>
+<status status="PASS" starttime="20201105 16:42:26.293" endtime="20201105 16:42:26.293"></status>
 </kw>
 <kw name="Cookie Step" library="bee">
-<msg timestamp="20201105 14:34:04.118" level="INFO">[Cookie Step] 获取cookie步骤</msg>
-<status status="PASS" starttime="20201105 14:34:04.118" endtime="20201105 14:34:04.118"></status>
+<msg timestamp="20201105 16:42:26.294" level="INFO">[Cookie Step] 获取cookie步骤</msg>
+<status status="PASS" starttime="20201105 16:42:26.293" endtime="20201105 16:42:26.294"></status>
 </kw>
 <kw name="Get Boss Cookie" library="bee">
 <arguments>
@@ -98,20 +204,20 @@
 <assign>
 <var>${cookie}</var>
 </assign>
-<msg timestamp="20201105 14:34:05.327" level="INFO">${cookie} = {'sso-epctoken': '44CFDBCD3A36D1D24E72FD29F888BF026E6CCF506D3CA5F324D332368E7305001682A8889B7A810AA92C334F2046B563'}</msg>
-<status status="PASS" starttime="20201105 14:34:04.118" endtime="20201105 14:34:05.327"></status>
+<msg timestamp="20201105 16:42:27.476" level="INFO">${cookie} = {'sso-epctoken': '0CA7B2201251C5B97C74FDC4D16001B94A7BCC24761CFF2BE0E5FFD7B412A4401682A8889B7A810AA92C334F2046B563'}</msg>
+<status status="PASS" starttime="20201105 16:42:26.294" endtime="20201105 16:42:27.477"></status>
 </kw>
 <kw name="Excute Step" library="bee">
-<msg timestamp="20201105 14:34:05.327" level="INFO">[Excute Step] 发送接口请求步骤</msg>
-<status status="PASS" starttime="20201105 14:34:05.327" endtime="20201105 14:34:05.328"></status>
+<msg timestamp="20201105 16:42:27.477" level="INFO">[Excute Step] 发送接口请求步骤</msg>
+<status status="PASS" starttime="20201105 16:42:27.477" endtime="20201105 16:42:27.477"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
 <assign>
 <var>${post_data}</var>
 </assign>
-<msg timestamp="20201105 14:34:05.329" level="INFO">${post_data} = {}</msg>
-<status status="PASS" starttime="20201105 14:34:05.328" endtime="20201105 14:34:05.329"></status>
+<msg timestamp="20201105 16:42:27.478" level="INFO">${post_data} = {}</msg>
+<status status="PASS" starttime="20201105 16:42:27.478" endtime="20201105 16:42:27.478"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -121,7 +227,7 @@
 <arg>customerId</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:05.329" endtime="20201105 14:34:05.330"></status>
+<status status="PASS" starttime="20201105 16:42:27.479" endtime="20201105 16:42:27.479"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -131,7 +237,7 @@
 <arg>productIdList</arg>
 <arg>${productIdList}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:05.330" endtime="20201105 14:34:05.330"></status>
+<status status="PASS" starttime="20201105 16:42:27.479" endtime="20201105 16:42:27.480"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -141,7 +247,7 @@
 <arg>serviceType</arg>
 <arg>${serviceType}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:05.330" endtime="20201105 14:34:05.331"></status>
+<status status="PASS" starttime="20201105 16:42:27.480" endtime="20201105 16:42:27.480"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -151,7 +257,7 @@
 <arg>amount</arg>
 <arg>${amount}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:05.331" endtime="20201105 14:34:05.331"></status>
+<status status="PASS" starttime="20201105 16:42:27.480" endtime="20201105 16:42:27.481"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -161,7 +267,7 @@
 <arg>invoiceProperty</arg>
 <arg>${invoiceProperty}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:05.331" endtime="20201105 14:34:05.332"></status>
+<status status="PASS" starttime="20201105 16:42:27.481" endtime="20201105 16:42:27.481"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -171,7 +277,7 @@
 <arg>payStrategy</arg>
 <arg>${payStrategy}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:05.332" endtime="20201105 14:34:05.332"></status>
+<status status="PASS" starttime="20201105 16:42:27.481" endtime="20201105 16:42:27.482"></status>
 </kw>
 <kw name="Http Json Post" library="bee">
 <arguments>
@@ -183,27 +289,27 @@
 <assign>
 <var>${resp}</var>
 </assign>
-<msg timestamp="20201105 14:34:05.341" level="INFO">[Http请求Post] url: http://yypt-front-spare.sit.91lyd.com/api/opc/v1/pay/simulateDeduct</msg>
-<msg timestamp="20201105 14:34:05.341" level="INFO">[Http请求Post] 参数: {'customerId': '', 'productIdList': ['33100'], 'serviceType': '04', 'amount': '99', 'invoiceProperty': '', 'payStrategy': '1'}</msg>
-<msg timestamp="20201105 14:34:05.551" level="INFO" html="yes">&lt;details&gt;&lt;summary&gt;&amp;gt; POST http://yypt-front-spare.sit.91lyd.com/api/opc/v1/pay/simulateDeduct&lt;/summary&gt;&lt;p&gt;&amp;gt; POST http://yypt-front-spare.sit.91lyd.com/api/opc/v1/pay/simulateDeduct
+<msg timestamp="20201105 16:42:27.491" level="INFO">[Http请求Post] url: http://yypt-front-spare.sit.91lyd.com/api/opc/v1/pay/simulateDeduct</msg>
+<msg timestamp="20201105 16:42:27.491" level="INFO">[Http请求Post] 参数: {'customerId': '', 'productIdList': ['33100'], 'serviceType': '04', 'amount': '99', 'invoiceProperty': '', 'payStrategy': '1'}</msg>
+<msg timestamp="20201105 16:42:27.756" level="INFO" html="yes">&lt;details&gt;&lt;summary&gt;&amp;gt; POST http://yypt-front-spare.sit.91lyd.com/api/opc/v1/pay/simulateDeduct&lt;/summary&gt;&lt;p&gt;&amp;gt; POST http://yypt-front-spare.sit.91lyd.com/api/opc/v1/pay/simulateDeduct
 &amp;gt; User-Agent: python-requests/2.23.0
 &amp;gt; Accept-Encoding: gzip, deflate
 &amp;gt; Accept: */*
 &amp;gt; Connection: keep-alive
 &amp;gt; Content-Type: application/json
-&amp;gt; Cookie: sso-epctoken=44CFDBCD3A36D1D24E72FD29F888BF026E6CCF506D3CA5F324D332368E7305001682A8889B7A810AA92C334F2046B563
+&amp;gt; Cookie: sso-epctoken=0CA7B2201251C5B97C74FDC4D16001B94A7BCC24761CFF2BE0E5FFD7B412A4401682A8889B7A810AA92C334F2046B563
 &amp;gt; Content-Length: 126
 &amp;gt;
 {"customerId": "", "productIdList": ["33100"], "serviceType": "04", "amount": "99", "invoiceProperty": "", "payStrategy": "1"}
-* Elapsed time: 0:00:00.208358
+* Elapsed time: 0:00:00.263614
 &amp;gt;
 &amp;lt; 200 OK
 &amp;lt; Server: nginx/1.13.12
-&amp;lt; Date: Thu, 05 Nov 2020 06:34:05 GMT
+&amp;lt; Date: Thu, 05 Nov 2020 08:42:27 GMT
 &amp;lt; Content-Type: application/json;charset=UTF-8
 &amp;lt; Transfer-Encoding: chunked
 &amp;lt; Connection: keep-alive
-&amp;lt; traceId: 169a0b758d7c4e6da1e01c2e9b798de1
+&amp;lt; traceId: eadf9e98c0da45c2897bea28eea3a777
 &amp;lt; Content-Encoding: gzip
 &amp;lt; Vary: Accept-Encoding
 &amp;lt; Access-Control-Allow-Headers: X-Requested-With,accept,origin,Content-Type,appSecret,softCode,MessageType,ChannelId,timestamp,channelDm,accessToken,companyId,operatorId,ClientVersion,appId,token,appKey,accountId,mac,version, X-Requested-With,accept,origin,Content-Type,appSecret,softCode,MessageType,ChannelId,timestamp,channelDm,accessToken,companyId,operatorId,ClientVersion,appId,token,appKey,accountId,mac,version, X-Requested-With,accept,origin,Content-Type,appSecret,softCode,MessageType,ChannelId,timestamp,channelDm,accessToken,companyId,operatorId,ClientVersion,appId,token,appKey,accountId,mac,version
@@ -215,245 +321,57 @@
     "messageCode": "error.params.blank",
     "success": false
 }&lt;/p&gt;&lt;/details&gt;</msg>
-<msg timestamp="20201105 14:34:05.552" level="WARN">[生成Schema] e797fe55b21656a5abac1e690bba372c文件已存在，内容不覆盖，重新生成请删除文件</msg>
-<msg timestamp="20201105 14:34:05.553" level="INFO">${resp} = {'success': False, 'messageCode': 'error.params.blank', 'message': '客戶id不能为空', 'data': None}</msg>
-<status status="PASS" starttime="20201105 14:34:05.333" endtime="20201105 14:34:05.553"></status>
+<msg timestamp="20201105 16:42:27.757" level="WARN">[生成Schema] e797fe55b21656a5abac1e690bba372c文件已存在，内容不覆盖，重新生成请删除文件</msg>
+<msg timestamp="20201105 16:42:27.758" level="INFO">${resp} = {'success': False, 'messageCode': 'error.params.blank', 'message': '客戶id不能为空', 'data': None}</msg>
+<status status="PASS" starttime="20201105 16:42:27.482" endtime="20201105 16:42:27.758"></status>
 </kw>
 <kw name="Check Step" library="bee">
-<msg timestamp="20201105 14:34:05.553" level="INFO">[Check Step] 校验测试结果，根据接口返回值进行系统入库校验</msg>
-<status status="PASS" starttime="20201105 14:34:05.553" endtime="20201105 14:34:05.553"></status>
+<msg timestamp="20201105 16:42:27.759" level="INFO">[Check Step] 校验测试结果，根据接口返回值进行系统入库校验</msg>
+<status status="PASS" starttime="20201105 16:42:27.758" endtime="20201105 16:42:27.759"></status>
 </kw>
 <kw name="Equal As String" library="bee">
 <arguments>
 <arg>${resp['success']}</arg>
 <arg>${False}</arg>
 </arguments>
-<msg timestamp="20201105 14:34:05.554" level="INFO">[字符串相等] 校验通过, False == False</msg>
-<status status="PASS" starttime="20201105 14:34:05.554" endtime="20201105 14:34:05.554"></status>
+<msg timestamp="20201105 16:42:27.760" level="INFO">[字符串相等] 校验通过, False == False</msg>
+<status status="PASS" starttime="20201105 16:42:27.759" endtime="20201105 16:42:27.760"></status>
 </kw>
 <kw name="Equal As String" library="bee">
 <arguments>
 <arg>${resp['message']}</arg>
 <arg>客戶id不能为空</arg>
 </arguments>
-<msg timestamp="20201105 14:34:05.555" level="INFO">[字符串相等] 校验通过, 客戶id不能为空 == 客戶id不能为空</msg>
-<status status="PASS" starttime="20201105 14:34:05.554" endtime="20201105 14:34:05.555"></status>
+<msg timestamp="20201105 16:42:27.761" level="INFO">[字符串相等] 校验通过, 客戶id不能为空 == 客戶id不能为空</msg>
+<status status="PASS" starttime="20201105 16:42:27.760" endtime="20201105 16:42:27.761"></status>
 </kw>
 <kw name="Validate Schema" library="bee">
 <arguments>
 <arg>${resp}</arg>
 </arguments>
-<msg timestamp="20201105 14:34:05.556" level="INFO">[校验Schema] 读取规则文件: C:\Users\pzm\robot-files\json-schema\Autotest\支付中心\支付核心\余额模拟扣款\1、参数校验\e797fe55b21656a5abac1e690bba372c.json</msg>
-<msg timestamp="20201105 14:34:05.557" level="INFO">[校验Schema] 校验通过</msg>
-<status status="PASS" starttime="20201105 14:34:05.555" endtime="20201105 14:34:05.557"></status>
+<msg timestamp="20201105 16:42:27.762" level="INFO">[校验Schema] 读取规则文件: C:\Users\pzm\robot-files\json-schema\Autotest\支付中心\支付核心\余额模拟扣款\1、参数校验\e797fe55b21656a5abac1e690bba372c.json</msg>
+<msg timestamp="20201105 16:42:27.763" level="INFO">[校验Schema] 校验通过</msg>
+<status status="PASS" starttime="20201105 16:42:27.761" endtime="20201105 16:42:27.763"></status>
 </kw>
 <kw name="Close Step" library="bee">
-<msg timestamp="20201105 14:34:05.558" level="INFO">[Final Step] 释放相关连接，例如数据库连接</msg>
-<status status="PASS" starttime="20201105 14:34:05.557" endtime="20201105 14:34:05.558"></status>
+<msg timestamp="20201105 16:42:27.763" level="INFO">[Final Step] 释放相关连接，例如数据库连接</msg>
+<status status="PASS" starttime="20201105 16:42:27.763" endtime="20201105 16:42:27.764"></status>
 </kw>
-<status status="PASS" starttime="20201105 14:34:03.934" endtime="20201105 14:34:05.558" critical="yes"></status>
+<status status="PASS" starttime="20201105 16:42:25.973" endtime="20201105 16:42:27.764" critical="yes"></status>
 </test>
-<test id="s1-s1-s1-s1-s1-t2" name="1.2 customerId为null查询模拟扣款，返回customerId不能为null">
+<status status="PASS" starttime="20201105 16:42:25.968" endtime="20201105 16:42:27.764"></status>
+</suite>
+<status status="PASS" starttime="20201105 16:42:25.964" endtime="20201105 16:42:27.767"></status>
+</suite>
+<status status="PASS" starttime="20201105 16:42:25.961" endtime="20201105 16:42:27.770"></status>
+</suite>
+<suite id="s1-s1-s3" name="汇款转账" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\汇款转账">
+<suite id="s1-s1-s3-s1" name="查询汇款转账记录" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\汇款转账\查询汇款转账记录">
+<suite id="s1-s1-s3-s1-s1" name="1、参数校验" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\汇款转账\查询汇款转账记录\1、参数校验.robot">
+<test id="s1-s1-s3-s1-s1-t1" name="1.1 pageNo为空、pageSize为空查询汇款转战记录，返回第一页20条数据">
 <kw name="Init Step" library="bee">
-<msg timestamp="20201105 14:34:05.738" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
-<status status="PASS" starttime="20201105 14:34:05.561" endtime="20201105 14:34:05.738"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>/opc/v1/pay/simulateDeduct</arg>
-</arguments>
-<assign>
-<var>${uri}</var>
-</assign>
-<msg timestamp="20201105 14:34:05.739" level="INFO">${uri} = /opc/v1/pay/simulateDeduct</msg>
-<status status="PASS" starttime="20201105 14:34:05.738" endtime="20201105 14:34:05.739"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>1297612423314</arg>
-</arguments>
-<assign>
-<var>${customerId}</var>
-</assign>
-<msg timestamp="20201105 14:34:05.739" level="INFO">${customerId} = 1297612423314</msg>
-<status status="PASS" starttime="20201105 14:34:05.739" endtime="20201105 14:34:05.739"></status>
-</kw>
-<kw name="Create List" library="BuiltIn">
-<doc>Returns a list containing given items.</doc>
-<arguments>
-<arg>33100</arg>
-</arguments>
-<assign>
-<var>${productIdList}</var>
-</assign>
-<msg timestamp="20201105 14:34:05.740" level="INFO">${productIdList} = ['33100']</msg>
-<status status="PASS" starttime="20201105 14:34:05.740" endtime="20201105 14:34:05.740"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>04</arg>
-</arguments>
-<assign>
-<var>${serviceType}</var>
-</assign>
-<msg timestamp="20201105 14:34:05.740" level="INFO">${serviceType} = 04</msg>
-<status status="PASS" starttime="20201105 14:34:05.740" endtime="20201105 14:34:05.741"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>99</arg>
-</arguments>
-<assign>
-<var>${amount}</var>
-</assign>
-<msg timestamp="20201105 14:34:05.741" level="INFO">${amount} = 99</msg>
-<status status="PASS" starttime="20201105 14:34:05.741" endtime="20201105 14:34:05.741"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>${EMPTY}</arg>
-</arguments>
-<assign>
-<var>${invoiceProperty}</var>
-</assign>
-<msg timestamp="20201105 14:34:05.742" level="INFO">${invoiceProperty} = </msg>
-<status status="PASS" starttime="20201105 14:34:05.741" endtime="20201105 14:34:05.742"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>1</arg>
-</arguments>
-<assign>
-<var>${payStrategy}</var>
-</assign>
-<msg timestamp="20201105 14:34:05.742" level="INFO">${payStrategy} = 1</msg>
-<status status="PASS" starttime="20201105 14:34:05.742" endtime="20201105 14:34:05.742"></status>
-</kw>
-<kw name="Cookie Step" library="bee">
-<msg timestamp="20201105 14:34:05.743" level="INFO">[Cookie Step] 获取cookie步骤</msg>
-<status status="PASS" starttime="20201105 14:34:05.743" endtime="20201105 14:34:05.743"></status>
-</kw>
-<kw name="Get Boss Cookie" library="bee">
-<arguments>
-<arg>xqy_admin</arg>
-</arguments>
-<assign>
-<var>${cookie}</var>
-</assign>
-<msg timestamp="20201105 14:34:06.780" level="INFO">${cookie} = {'sso-epctoken': '2BC35A2DA4226BA84A67BD835A27A3FD4A137259CC0EF7B279A5B1BBDA8D89B21682A8889B7A810AA92C334F2046B563'}</msg>
-<status status="PASS" starttime="20201105 14:34:05.743" endtime="20201105 14:34:06.781"></status>
-</kw>
-<kw name="Excute Step" library="bee">
-<msg timestamp="20201105 14:34:06.781" level="INFO">[Excute Step] 发送接口请求步骤</msg>
-<status status="PASS" starttime="20201105 14:34:06.781" endtime="20201105 14:34:06.781"></status>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<assign>
-<var>${post_data}</var>
-</assign>
-<msg timestamp="20201105 14:34:06.782" level="INFO">${post_data} = {}</msg>
-<status status="PASS" starttime="20201105 14:34:06.782" endtime="20201105 14:34:06.782"></status>
-</kw>
-<kw name="Set To Dictionary" library="bee">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
-| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
-<arguments>
-<arg>${post_data}</arg>
-<arg>customerId</arg>
-<arg>${None}</arg>
-</arguments>
-<status status="PASS" starttime="20201105 14:34:06.782" endtime="20201105 14:34:06.783"></status>
-</kw>
-<kw name="Set To Dictionary" library="bee">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
-| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
-<arguments>
-<arg>${post_data}</arg>
-<arg>productIdList</arg>
-<arg>${productIdList}</arg>
-</arguments>
-<status status="PASS" starttime="20201105 14:34:06.783" endtime="20201105 14:34:06.783"></status>
-</kw>
-<kw name="Set To Dictionary" library="bee">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
-| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
-<arguments>
-<arg>${post_data}</arg>
-<arg>serviceType</arg>
-<arg>${serviceType}</arg>
-</arguments>
-<status status="PASS" starttime="20201105 14:34:06.784" endtime="20201105 14:34:06.784"></status>
-</kw>
-<kw name="Set To Dictionary" library="bee">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
-| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
-<arguments>
-<arg>${post_data}</arg>
-<arg>amount</arg>
-<arg>${amount}</arg>
-</arguments>
-<status status="PASS" starttime="20201105 14:34:06.784" endtime="20201105 14:34:06.785"></status>
-</kw>
-<kw name="Set To Dictionary" library="bee">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
-| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
-<arguments>
-<arg>${post_data}</arg>
-<arg>invoiceProperty</arg>
-<arg>${invoiceProperty}</arg>
-</arguments>
-<status status="PASS" starttime="20201105 14:34:06.785" endtime="20201105 14:34:06.785"></status>
-</kw>
-<kw name="Set To Dictionary" library="bee">
-<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
-| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
-<arguments>
-<arg>${post_data}</arg>
-<arg>payStrategy</arg>
-<arg>${payStrategy}</arg>
-</arguments>
-<status status="PASS" starttime="20201105 14:34:06.785" endtime="20201105 14:34:06.786"></status>
-</kw>
-<kw name="Http Post">
-<arguments>
-<arg>opc</arg>
-<arg>${uri}</arg>
-<arg>${post_data}</arg>
-<arg>json</arg>
-<arg>${cookie}</arg>
-</arguments>
-<assign>
-<var>${resp}</var>
-</assign>
-<msg timestamp="20201105 14:34:06.788" level="FAIL">No keyword with name 'Http Post' found. Did you mean:
-    bee.Http Json Post
-    bee.Http Form Post</msg>
-<status status="FAIL" starttime="20201105 14:34:06.788" endtime="20201105 14:34:06.788"></status>
-</kw>
-<status status="FAIL" starttime="20201105 14:34:05.558" endtime="20201105 14:34:06.788" critical="yes">No keyword with name 'Http Post' found. Did you mean:
-    bee.Http Json Post
-    bee.Http Form Post</status>
-</test>
-<status status="FAIL" starttime="20201105 14:34:03.225" endtime="20201105 14:34:06.789"></status>
-</suite>
-<status status="FAIL" starttime="20201105 14:34:03.221" endtime="20201105 14:34:06.792"></status>
-</suite>
-<status status="FAIL" starttime="20201105 14:34:03.218" endtime="20201105 14:34:06.795"></status>
-</suite>
-<suite id="s1-s1-s2" name="汇款转账" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\汇款转账">
-<suite id="s1-s1-s2-s1" name="查询汇款转账记录" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\汇款转账\查询汇款转账记录">
-<suite id="s1-s1-s2-s1-s1" name="1、参数校验" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\汇款转账\查询汇款转账记录\1、参数校验.robot">
-<test id="s1-s1-s2-s1-s1-t1" name="1.1 pageNo为空、pageSize为空查询汇款转战记录，返回第一页20条数据">
-<kw name="Init Step" library="bee">
-<msg timestamp="20201105 14:34:06.992" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
-<status status="PASS" starttime="20201105 14:34:06.811" endtime="20201105 14:34:06.992"></status>
+<msg timestamp="20201105 16:42:28.090" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
+<status status="PASS" starttime="20201105 16:42:27.787" endtime="20201105 16:42:28.090"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -463,12 +381,12 @@
 <assign>
 <var>${uri}</var>
 </assign>
-<msg timestamp="20201105 14:34:06.993" level="INFO">${uri} = /opc/v1/pay/queryRemittance</msg>
-<status status="PASS" starttime="20201105 14:34:06.993" endtime="20201105 14:34:06.993"></status>
+<msg timestamp="20201105 16:42:28.091" level="INFO">${uri} = /opc/v1/pay/queryRemittance</msg>
+<status status="PASS" starttime="20201105 16:42:28.090" endtime="20201105 16:42:28.091"></status>
 </kw>
 <kw name="Cookie Step" library="bee">
-<msg timestamp="20201105 14:34:06.994" level="INFO">[Cookie Step] 获取cookie步骤</msg>
-<status status="PASS" starttime="20201105 14:34:06.993" endtime="20201105 14:34:06.994"></status>
+<msg timestamp="20201105 16:42:28.091" level="INFO">[Cookie Step] 获取cookie步骤</msg>
+<status status="PASS" starttime="20201105 16:42:28.091" endtime="20201105 16:42:28.091"></status>
 </kw>
 <kw name="Get Boss Cookie" library="bee">
 <arguments>
@@ -477,20 +395,20 @@
 <assign>
 <var>${cookie}</var>
 </assign>
-<msg timestamp="20201105 14:34:08.099" level="INFO">${cookie} = {'sso-epctoken': '20356D3448CA7DCE9590320C8CA573E1D1E66270F1F3F74014B14DAEBE399A0E1682A8889B7A810AA92C334F2046B563'}</msg>
-<status status="PASS" starttime="20201105 14:34:06.995" endtime="20201105 14:34:08.100"></status>
+<msg timestamp="20201105 16:42:29.059" level="INFO">${cookie} = {'sso-epctoken': '7EE0CFBA8A2F049EE6F20F194C55A080FF3DC2D49F7C084C42253D86AE163E8F1682A8889B7A810AA92C334F2046B563'}</msg>
+<status status="PASS" starttime="20201105 16:42:28.092" endtime="20201105 16:42:29.059"></status>
 </kw>
 <kw name="Excute Step" library="bee">
-<msg timestamp="20201105 14:34:08.100" level="INFO">[Excute Step] 发送接口请求步骤</msg>
-<status status="PASS" starttime="20201105 14:34:08.100" endtime="20201105 14:34:08.100"></status>
+<msg timestamp="20201105 16:42:29.059" level="INFO">[Excute Step] 发送接口请求步骤</msg>
+<status status="PASS" starttime="20201105 16:42:29.059" endtime="20201105 16:42:29.060"></status>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
 <assign>
 <var>${post_data}</var>
 </assign>
-<msg timestamp="20201105 14:34:08.101" level="INFO">${post_data} = {}</msg>
-<status status="PASS" starttime="20201105 14:34:08.101" endtime="20201105 14:34:08.101"></status>
+<msg timestamp="20201105 16:42:29.060" level="INFO">${post_data} = {}</msg>
+<status status="PASS" starttime="20201105 16:42:29.060" endtime="20201105 16:42:29.060"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -500,7 +418,7 @@
 <arg>accountName</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:08.101" endtime="20201105 14:34:08.102"></status>
+<status status="PASS" starttime="20201105 16:42:29.061" endtime="20201105 16:42:29.061"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -510,7 +428,7 @@
 <arg>accountNo</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:08.102" endtime="20201105 14:34:08.102"></status>
+<status status="PASS" starttime="20201105 16:42:29.061" endtime="20201105 16:42:29.062"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -520,7 +438,7 @@
 <arg>amountStart</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:08.102" endtime="20201105 14:34:08.103"></status>
+<status status="PASS" starttime="20201105 16:42:29.062" endtime="20201105 16:42:29.062"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -530,7 +448,7 @@
 <arg>amountEnd</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:08.103" endtime="20201105 14:34:08.103"></status>
+<status status="PASS" starttime="20201105 16:42:29.063" endtime="20201105 16:42:29.063"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -540,7 +458,7 @@
 <arg>dateStart</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:08.104" endtime="20201105 14:34:08.104"></status>
+<status status="PASS" starttime="20201105 16:42:29.063" endtime="20201105 16:42:29.064"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -550,7 +468,7 @@
 <arg>dateEnd</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:08.104" endtime="20201105 14:34:08.105"></status>
+<status status="PASS" starttime="20201105 16:42:29.064" endtime="20201105 16:42:29.064"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -560,7 +478,7 @@
 <arg>pageNo</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:08.105" endtime="20201105 14:34:08.105"></status>
+<status status="PASS" starttime="20201105 16:42:29.064" endtime="20201105 16:42:29.065"></status>
 </kw>
 <kw name="Set To Dictionary" library="bee">
 <doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
@@ -570,7 +488,7 @@
 <arg>pageSize</arg>
 <arg>${EMPTY}</arg>
 </arguments>
-<status status="PASS" starttime="20201105 14:34:08.105" endtime="20201105 14:34:08.106"></status>
+<status status="PASS" starttime="20201105 16:42:29.065" endtime="20201105 16:42:29.066"></status>
 </kw>
 <kw name="Http Post">
 <arguments>
@@ -583,44 +501,430 @@
 <assign>
 <var>${resp}</var>
 </assign>
-<msg timestamp="20201105 14:34:08.108" level="FAIL">No keyword with name 'Http Post' found. Did you mean:
+<msg timestamp="20201105 16:42:29.068" level="FAIL">No keyword with name 'Http Post' found. Did you mean:
     bee.Http Json Post
     bee.Http Form Post</msg>
-<status status="FAIL" starttime="20201105 14:34:08.107" endtime="20201105 14:34:08.108"></status>
+<status status="FAIL" starttime="20201105 16:42:29.067" endtime="20201105 16:42:29.068"></status>
 </kw>
-<status status="FAIL" starttime="20201105 14:34:06.809" endtime="20201105 14:34:08.108" critical="yes">No keyword with name 'Http Post' found. Did you mean:
+<status status="FAIL" starttime="20201105 16:42:27.785" endtime="20201105 16:42:29.068" critical="yes">No keyword with name 'Http Post' found. Did you mean:
     bee.Http Json Post
     bee.Http Form Post</status>
 </test>
-<status status="FAIL" starttime="20201105 14:34:06.804" endtime="20201105 14:34:08.109"></status>
+<status status="FAIL" starttime="20201105 16:42:27.779" endtime="20201105 16:42:29.069"></status>
 </suite>
-<status status="FAIL" starttime="20201105 14:34:06.800" endtime="20201105 14:34:08.112"></status>
+<status status="FAIL" starttime="20201105 16:42:27.775" endtime="20201105 16:42:29.072"></status>
 </suite>
-<status status="FAIL" starttime="20201105 14:34:06.798" endtime="20201105 14:34:08.115"></status>
+<suite id="s1-s1-s3-s2" name="校验待关联汇款转账" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\汇款转账\校验待关联汇款转账">
+<suite id="s1-s1-s3-s2-s1" name="2、功能场景" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\汇款转账\校验待关联汇款转账\2、功能场景.robot">
+<test id="s1-s1-s3-s2-s1-t1" name="2.1 存在一笔100元汇款转账，关联99元，返回可以使用">
+<kw name="Init Step" library="bee">
+<msg timestamp="20201105 16:42:29.383" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
+<status status="PASS" starttime="20201105 16:42:29.086" endtime="20201105 16:42:29.383"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>cn.com.servyou.business.opc.v1.facade.gateway.pay.RemittanceFacade</arg>
+</arguments>
+<assign>
+<var>${interface}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.384" level="INFO">${interface} = cn.com.servyou.business.opc.v1.facade.gateway.pay.RemittanceFacade</msg>
+<status status="PASS" starttime="20201105 16:42:29.383" endtime="20201105 16:42:29.384"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>checkRemittance</arg>
+</arguments>
+<assign>
+<var>${method}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.384" level="INFO">${method} = checkRemittance</msg>
+<status status="PASS" starttime="20201105 16:42:29.384" endtime="20201105 16:42:29.384"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>bc327672af287c4756202adfbc610150</arg>
+</arguments>
+<assign>
+<var>${remittanceId}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.385" level="INFO">${remittanceId} = bc327672af287c4756202adfbc610150</msg>
+<status status="PASS" starttime="20201105 16:42:29.385" endtime="20201105 16:42:29.385"></status>
+</kw>
+<kw name="Set Int Variable" library="bee">
+<arguments>
+<arg>99</arg>
+</arguments>
+<assign>
+<var>${amout}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.386" level="INFO">${amout} = 99</msg>
+<status status="PASS" starttime="20201105 16:42:29.385" endtime="20201105 16:42:29.386"></status>
+</kw>
+<kw name="Build Data" library="bee">
+<msg timestamp="20201105 16:42:29.386" level="INFO">[Build Data] 构建请求入参</msg>
+<status status="PASS" starttime="20201105 16:42:29.386" endtime="20201105 16:42:29.386"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>remittanceId=${remittanceId}</arg>
+<arg>amount=${amout}</arg>
+</arguments>
+<assign>
+<var>${remittance_1}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.387" level="INFO">${remittance_1} = {'remittanceId': 'bc327672af287c4756202adfbc610150', 'amount': 99}</msg>
+<status status="PASS" starttime="20201105 16:42:29.386" endtime="20201105 16:42:29.387"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${remittance_1}</arg>
+</arguments>
+<assign>
+<var>${remittanceList}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.388" level="INFO">${remittanceList} = [{'remittanceId': 'bc327672af287c4756202adfbc610150', 'amount': 99}]</msg>
+<status status="PASS" starttime="20201105 16:42:29.387" endtime="20201105 16:42:29.388"></status>
+</kw>
+<kw name="Excute Step" library="bee">
+<msg timestamp="20201105 16:42:29.388" level="INFO">[Excute Step] 发送接口请求步骤</msg>
+<status status="PASS" starttime="20201105 16:42:29.388" endtime="20201105 16:42:29.389"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<assign>
+<var>${post_data}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.389" level="INFO">${post_data} = {}</msg>
+<status status="PASS" starttime="20201105 16:42:29.389" endtime="20201105 16:42:29.389"></status>
+</kw>
+<kw name="Set To Dictionary" library="bee">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
+| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
+<arguments>
+<arg>${post_data}</arg>
+<arg>remittanceList</arg>
+<arg>${remittanceList}</arg>
+</arguments>
+<status status="PASS" starttime="20201105 16:42:29.389" endtime="20201105 16:42:29.390"></status>
+</kw>
+<kw name="Set To Dictionary" library="bee">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
+| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
+<arguments>
+<arg>${post_data}</arg>
+<arg>class</arg>
+<arg>java.util.List</arg>
+</arguments>
+<status status="PASS" starttime="20201105 16:42:29.390" endtime="20201105 16:42:29.390"></status>
+</kw>
+<kw name="Dubbo Invoke" library="bee">
+<doc>调用dubbo接口
+| Dubbo Invoke | usercenter | com.usercenter.interface | getUser| {"userId": 1}|</doc>
+<arguments>
+<arg>opc</arg>
+<arg>${interface}</arg>
+<arg>${method}</arg>
+<arg>${post_data}</arg>
+<arg>JsonObject</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.391" level="FAIL">Keyword 'bee.Dubbo Invoke' expected 3 to 4 arguments, got 5.</msg>
+<status status="FAIL" starttime="20201105 16:42:29.391" endtime="20201105 16:42:29.391"></status>
+</kw>
+<status status="FAIL" starttime="20201105 16:42:29.084" endtime="20201105 16:42:29.392" critical="yes">Keyword 'bee.Dubbo Invoke' expected 3 to 4 arguments, got 5.</status>
+</test>
+<status status="FAIL" starttime="20201105 16:42:29.079" endtime="20201105 16:42:29.392"></status>
 </suite>
-<status status="FAIL" starttime="20201105 14:34:03.215" endtime="20201105 14:34:08.117"></status>
+<status status="FAIL" starttime="20201105 16:42:29.075" endtime="20201105 16:42:29.396"></status>
 </suite>
-<status status="FAIL" starttime="20201105 14:34:03.186" endtime="20201105 14:34:08.120"></status>
+<status status="FAIL" starttime="20201105 16:42:27.772" endtime="20201105 16:42:29.399"></status>
+</suite>
+<suite id="s1-s1-s4" name="账户" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\账户">
+<suite id="s1-s1-s4-s1" name="开户" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\账户\开户">
+<suite id="s1-s1-s4-s1-s1" name="2、Pts开户" source="D:\gitee.io\itrack\robotframework-bee\autotest\支付中心\账户\开户\2、pts开户.robot">
+<test id="s1-s1-s4-s1-s1-t1" name="2.1 存在一个pts客户，给该客户开一个非ios、结算、充值即开票、商品不限的账户，返回创建成功">
+<kw name="Init Step" library="bee">
+<msg timestamp="20201105 16:42:29.731" level="INFO">[Init Step] 设置测试相关参数，设置接口uri名称以及相关业务变量</msg>
+<status status="PASS" starttime="20201105 16:42:29.418" endtime="20201105 16:42:29.731"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>/opc/v1/account/openAccount</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.733" level="INFO">${uri} = /opc/v1/account/openAccount</msg>
+<status status="PASS" starttime="20201105 16:42:29.732" endtime="20201105 16:42:29.733"></status>
+</kw>
+<kw name="Create PTS Customer" library="bee">
+<assign>
+<var>${customerId}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.880" level="INFO">customerName = pts客户-1604565749000</msg>
+<msg timestamp="20201105 16:42:29.880" level="INFO">${customerId} = 1297681957015</msg>
+<status status="PASS" starttime="20201105 16:42:29.733" endtime="20201105 16:42:29.880"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>01</arg>
+</arguments>
+<assign>
+<var>${serviceType}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.881" level="INFO">${serviceType} = 01</msg>
+<status status="PASS" starttime="20201105 16:42:29.880" endtime="20201105 16:42:29.881"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${platformType}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.882" level="INFO">${platformType} = 1</msg>
+<status status="PASS" starttime="20201105 16:42:29.881" endtime="20201105 16:42:29.882"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${settleType}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.882" level="INFO">${settleType} = 2</msg>
+<status status="PASS" starttime="20201105 16:42:29.882" endtime="20201105 16:42:29.882"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${invoiceProperty}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.883" level="INFO">${invoiceProperty} = 1</msg>
+<status status="PASS" starttime="20201105 16:42:29.883" endtime="20201105 16:42:29.883"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<assign>
+<var>${productIdList}</var>
+</assign>
+<msg timestamp="20201105 16:42:29.884" level="INFO">${productIdList} = []</msg>
+<status status="PASS" starttime="20201105 16:42:29.883" endtime="20201105 16:42:29.884"></status>
+</kw>
+<kw name="Cookie Step" library="bee">
+<msg timestamp="20201105 16:42:29.884" level="INFO">[Cookie Step] 获取cookie步骤</msg>
+<status status="PASS" starttime="20201105 16:42:29.884" endtime="20201105 16:42:29.884"></status>
+</kw>
+<kw name="Get Boss Cookie" library="bee">
+<arguments>
+<arg>xxbyw_hb</arg>
+</arguments>
+<assign>
+<var>${cookies}</var>
+</assign>
+<msg timestamp="20201105 16:42:31.314" level="INFO">${cookies} = {'sso-epctoken': '3E7B102B1C72841A278FB9E360D2D01BCD278C4F903472A24788C69FC16879711682A8889B7A810AA92C334F2046B563'}</msg>
+<status status="PASS" starttime="20201105 16:42:29.884" endtime="20201105 16:42:31.314"></status>
+</kw>
+<kw name="Mysql Step" library="bee">
+<msg timestamp="20201105 16:42:31.314" level="INFO">[Mysql Step] 操作mysql步骤，预置数据sql</msg>
+<status status="PASS" starttime="20201105 16:42:31.314" endtime="20201105 16:42:31.315"></status>
+</kw>
+<kw name="Build Data" library="bee">
+<msg timestamp="20201105 16:42:31.315" level="INFO">[Build Data] 构建请求入参</msg>
+<status status="PASS" starttime="20201105 16:42:31.315" endtime="20201105 16:42:31.315"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<assign>
+<var>${post_data}</var>
+</assign>
+<msg timestamp="20201105 16:42:31.316" level="INFO">${post_data} = {}</msg>
+<status status="PASS" starttime="20201105 16:42:31.316" endtime="20201105 16:42:31.316"></status>
+</kw>
+<kw name="Set To Dictionary" library="bee">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
+| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
+<arguments>
+<arg>${post_data}</arg>
+<arg>customerId</arg>
+<arg>${customerId}</arg>
+</arguments>
+<status status="PASS" starttime="20201105 16:42:31.316" endtime="20201105 16:42:31.317"></status>
+</kw>
+<kw name="Set To Dictionary" library="bee">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
+| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
+<arguments>
+<arg>${post_data}</arg>
+<arg>serviceType</arg>
+<arg>${serviceType}</arg>
+</arguments>
+<status status="PASS" starttime="20201105 16:42:31.317" endtime="20201105 16:42:31.317"></status>
+</kw>
+<kw name="Set To Dictionary" library="bee">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
+| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
+<arguments>
+<arg>${post_data}</arg>
+<arg>platformType</arg>
+<arg>${platformType}</arg>
+</arguments>
+<status status="PASS" starttime="20201105 16:42:31.317" endtime="20201105 16:42:31.318"></status>
+</kw>
+<kw name="Set To Dictionary" library="bee">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
+| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
+<arguments>
+<arg>${post_data}</arg>
+<arg>settleType</arg>
+<arg>${settleType}</arg>
+</arguments>
+<status status="PASS" starttime="20201105 16:42:31.318" endtime="20201105 16:42:31.318"></status>
+</kw>
+<kw name="Set To Dictionary" library="bee">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
+| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
+<arguments>
+<arg>${post_data}</arg>
+<arg>invoiceProperty</arg>
+<arg>${invoiceProperty}</arg>
+</arguments>
+<status status="PASS" starttime="20201105 16:42:31.318" endtime="20201105 16:42:31.319"></status>
+</kw>
+<kw name="Set To Dictionary" library="bee">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to the ``dictionary``.
+| Set To Dictionary | ${D1} | key | value | second | ${2} |</doc>
+<arguments>
+<arg>${post_data}</arg>
+<arg>productIdList</arg>
+<arg>${productIdList}</arg>
+</arguments>
+<status status="PASS" starttime="20201105 16:42:31.319" endtime="20201105 16:42:31.319"></status>
+</kw>
+<kw name="Excute Step" library="bee">
+<msg timestamp="20201105 16:42:31.320" level="INFO">[Excute Step] 发送接口请求步骤</msg>
+<status status="PASS" starttime="20201105 16:42:31.319" endtime="20201105 16:42:31.320"></status>
+</kw>
+<kw name="Http Json Post" library="bee">
+<arguments>
+<arg>opc</arg>
+<arg>${uri}</arg>
+<arg>${post_data}</arg>
+<arg>${cookies}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20201105 16:42:31.329" level="INFO">[Http请求Post] url: http://yypt-front-spare.sit.91lyd.com/api/opc/v1/account/openAccount</msg>
+<msg timestamp="20201105 16:42:31.330" level="INFO">[Http请求Post] 参数: {'customerId': 1297681957015, 'serviceType': '01', 'platformType': '1', 'settleType': '2', 'invoiceProperty': '1', 'productIdList': []}</msg>
+<msg timestamp="20201105 16:42:31.910" level="INFO" html="yes">&lt;details&gt;&lt;summary&gt;&amp;gt; POST http://yypt-front-spare.sit.91lyd.com/api/opc/v1/account/openAccount&lt;/summary&gt;&lt;p&gt;&amp;gt; POST http://yypt-front-spare.sit.91lyd.com/api/opc/v1/account/openAccount
+&amp;gt; User-Agent: python-requests/2.23.0
+&amp;gt; Accept-Encoding: gzip, deflate
+&amp;gt; Accept: */*
+&amp;gt; Connection: keep-alive
+&amp;gt; Content-Type: application/json
+&amp;gt; Cookie: sso-epctoken=3E7B102B1C72841A278FB9E360D2D01BCD278C4F903472A24788C69FC16879711682A8889B7A810AA92C334F2046B563
+&amp;gt; Content-Length: 135
+&amp;gt;
+{"customerId": 1297681957015, "serviceType": "01", "platformType": "1", "settleType": "2", "invoiceProperty": "1", "productIdList": []}
+* Elapsed time: 0:00:00.578735
+&amp;gt;
+&amp;lt; 200 OK
+&amp;lt; Server: nginx/1.13.12
+&amp;lt; Date: Thu, 05 Nov 2020 08:42:31 GMT
+&amp;lt; Content-Type: application/json;charset=UTF-8
+&amp;lt; Transfer-Encoding: chunked
+&amp;lt; Connection: keep-alive
+&amp;lt; traceId: e97c8a958e66468692cd2b4ac2ebc847
+&amp;lt; Content-Encoding: gzip
+&amp;lt; Vary: Accept-Encoding
+&amp;lt; Access-Control-Allow-Headers: X-Requested-With,accept,origin,Content-Type,appSecret,softCode,MessageType,ChannelId,timestamp,channelDm,accessToken,companyId,operatorId,ClientVersion,appId,token,appKey,accountId,mac,version, X-Requested-With,accept,origin,Content-Type,appSecret,softCode,MessageType,ChannelId,timestamp,channelDm,accessToken,companyId,operatorId,ClientVersion,appId,token,appKey,accountId,mac,version, X-Requested-With,accept,origin,Content-Type,appSecret,softCode,MessageType,ChannelId,timestamp,channelDm,accessToken,companyId,operatorId,ClientVersion,appId,token,appKey,accountId,mac,version
+&amp;lt; Keep-Alive: timeout=66
+&amp;lt;
+{
+    "data": "202011055269884358",
+    "message": "处理成功",
+    "messageCode": "0",
+    "success": true,
+    "time": "2020-11-05 16:42:31"
+}&lt;/p&gt;&lt;/details&gt;</msg>
+<msg timestamp="20201105 16:42:31.943" level="WARN">[生成Schema] bd1a1c65177351289c2e31fb56a53a1f文件已存在，内容不覆盖，重新生成请删除文件</msg>
+<msg timestamp="20201105 16:42:31.944" level="INFO">${resp} = {'data': '202011055269884358', 'messageCode': '0', 'success': True, 'time': '2020-11-05 16:42:31', 'message': '处理成功'}</msg>
+<status status="PASS" starttime="20201105 16:42:31.320" endtime="20201105 16:42:31.944"></status>
+</kw>
+<kw name="Check Step" library="bee">
+<msg timestamp="20201105 16:42:31.944" level="INFO">[Check Step] 校验测试结果，根据接口返回值进行系统入库校验</msg>
+<status status="PASS" starttime="20201105 16:42:31.944" endtime="20201105 16:42:31.945"></status>
+</kw>
+<kw name="Validate Schema" library="bee">
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20201105 16:42:31.945" level="INFO">[校验Schema] 读取规则文件: C:\Users\pzm\robot-files\json-schema\Autotest\支付中心\账户\开户\2、Pts开户\bd1a1c65177351289c2e31fb56a53a1f.json</msg>
+<msg timestamp="20201105 16:42:31.947" level="INFO">[校验Schema] 校验通过</msg>
+<status status="PASS" starttime="20201105 16:42:31.945" endtime="20201105 16:42:31.947"></status>
+</kw>
+<kw name="Close Step" library="bee">
+<msg timestamp="20201105 16:42:31.947" level="INFO">[Final Step] 释放相关连接，例如数据库连接</msg>
+<status status="PASS" starttime="20201105 16:42:31.947" endtime="20201105 16:42:31.948"></status>
+</kw>
+<status status="PASS" starttime="20201105 16:42:29.414" endtime="20201105 16:42:31.948" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20201105 16:42:29.409" endtime="20201105 16:42:31.948"></status>
+</suite>
+<status status="PASS" starttime="20201105 16:42:29.404" endtime="20201105 16:42:31.951"></status>
+</suite>
+<status status="PASS" starttime="20201105 16:42:29.401" endtime="20201105 16:42:31.953"></status>
+</suite>
+<status status="FAIL" starttime="20201105 16:42:21.325" endtime="20201105 16:42:31.955"></status>
+</suite>
+<status status="FAIL" starttime="20201105 16:42:21.261" endtime="20201105 16:42:31.958"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="2">Critical Tests</stat>
-<stat pass="1" fail="2">All Tests</stat>
+<stat pass="2" fail="4">Critical Tests</stat>
+<stat pass="2" fail="4">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="2" id="s1" name="Autotest">Autotest</stat>
-<stat pass="1" fail="2" id="s1-s1" name="支付中心">Autotest.支付中心</stat>
-<stat pass="1" fail="1" id="s1-s1-s1" name="支付核心">Autotest.支付中心.支付核心</stat>
-<stat pass="1" fail="1" id="s1-s1-s1-s1" name="余额模拟扣款">Autotest.支付中心.支付核心.余额模拟扣款</stat>
-<stat pass="1" fail="1" id="s1-s1-s1-s1-s1" name="1、参数校验">Autotest.支付中心.支付核心.余额模拟扣款.1、参数校验</stat>
-<stat pass="0" fail="1" id="s1-s1-s2" name="汇款转账">Autotest.支付中心.汇款转账</stat>
-<stat pass="0" fail="1" id="s1-s1-s2-s1" name="查询汇款转账记录">Autotest.支付中心.汇款转账.查询汇款转账记录</stat>
-<stat pass="0" fail="1" id="s1-s1-s2-s1-s1" name="1、参数校验">Autotest.支付中心.汇款转账.查询汇款转账记录.1、参数校验</stat>
+<stat pass="2" fail="4" id="s1" name="Autotest">Autotest</stat>
+<stat pass="2" fail="4" id="s1-s1" name="支付中心">Autotest.支付中心</stat>
+<stat pass="0" fail="2" id="s1-s1-s1" name="充值单">Autotest.支付中心.充值单</stat>
+<stat pass="0" fail="1" id="s1-s1-s1-s1" name="修改充值单发票信息">Autotest.支付中心.充值单.修改充值单发票信息</stat>
+<stat pass="0" fail="1" id="s1-s1-s1-s1-s1" name="1、参数校验">Autotest.支付中心.充值单.修改充值单发票信息.1、参数校验</stat>
+<stat pass="0" fail="1" id="s1-s1-s1-s2" name="充值单收款">Autotest.支付中心.充值单.充值单收款</stat>
+<stat pass="0" fail="1" id="s1-s1-s1-s2-s1" name="2、功能场景">Autotest.支付中心.充值单.充值单收款.2、功能场景</stat>
+<stat pass="1" fail="0" id="s1-s1-s2" name="支付核心">Autotest.支付中心.支付核心</stat>
+<stat pass="1" fail="0" id="s1-s1-s2-s1" name="余额模拟扣款">Autotest.支付中心.支付核心.余额模拟扣款</stat>
+<stat pass="1" fail="0" id="s1-s1-s2-s1-s1" name="1、参数校验">Autotest.支付中心.支付核心.余额模拟扣款.1、参数校验</stat>
+<stat pass="0" fail="2" id="s1-s1-s3" name="汇款转账">Autotest.支付中心.汇款转账</stat>
+<stat pass="0" fail="1" id="s1-s1-s3-s1" name="查询汇款转账记录">Autotest.支付中心.汇款转账.查询汇款转账记录</stat>
+<stat pass="0" fail="1" id="s1-s1-s3-s1-s1" name="1、参数校验">Autotest.支付中心.汇款转账.查询汇款转账记录.1、参数校验</stat>
+<stat pass="0" fail="1" id="s1-s1-s3-s2" name="校验待关联汇款转账">Autotest.支付中心.汇款转账.校验待关联汇款转账</stat>
+<stat pass="0" fail="1" id="s1-s1-s3-s2-s1" name="2、功能场景">Autotest.支付中心.汇款转账.校验待关联汇款转账.2、功能场景</stat>
+<stat pass="1" fail="0" id="s1-s1-s4" name="账户">Autotest.支付中心.账户</stat>
+<stat pass="1" fail="0" id="s1-s1-s4-s1" name="开户">Autotest.支付中心.账户.开户</stat>
+<stat pass="1" fail="0" id="s1-s1-s4-s1-s1" name="2、Pts开户">Autotest.支付中心.账户.开户.2、Pts开户</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20201105 14:34:05.552" level="WARN">[生成Schema] e797fe55b21656a5abac1e690bba372c文件已存在，内容不覆盖，重新生成请删除文件</msg>
+<msg timestamp="20201105 16:42:27.757" level="WARN">[生成Schema] e797fe55b21656a5abac1e690bba372c文件已存在，内容不覆盖，重新生成请删除文件</msg>
+<msg timestamp="20201105 16:42:31.943" level="WARN">[生成Schema] bd1a1c65177351289c2e31fb56a53a1f文件已存在，内容不覆盖，重新生成请删除文件</msg>
 </errors>
 </robot>
