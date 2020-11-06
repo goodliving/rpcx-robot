@@ -2,9 +2,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/360EntSecGroup-Skylar/excelize"
 	"github.com/beevik/etree"
 	"log"
 )
+
+var num int
 
 func main()  {
 	doc := etree.NewDocument()
@@ -12,28 +15,36 @@ func main()  {
 		log.Fatal(err)
 	}
 
-	suite := doc.SelectElement("robot")
-	getTestInfo(suite)
+	root := doc.SelectElement("robot")
+	f := excelize.NewFile()
+	index := f.NewSheet("robotframework自动化用例执行结果")
+	getTestInfo(root, f, num + 1)
 
+	f.SetActiveSheet(index)
+	if err := f.SaveAs("Book1.xlsx"); err != nil {
+		fmt.Println(err)
+	}
 
-	//fmt.Println("suite: ", suite)
 }
 
-func getTestInfo(e *etree.Element) {
+func getTestInfo(e *etree.Element, f *excelize.File, n int) {
 
 	suites := e.SelectElements("suite")
 	tests := e.SelectElements("test")
 
 	if len(tests) != 0 {
 		for _, test := range tests {
+			next := n + 1
+			fmt.Println("next: ", next)
 			for _, value := range test.Parent().Attr {
 				if value.Key == "source" {
-					fmt.Println("module: ", value.Value)
+					f.SetCellValue("robotframework自动化用例执行结果", fmt.Sprintf("A%d", next), value.Value)
 				}
 			}
 
 			for _, value := range test.Attr {
 				if value.Key == "name" {
+					f.SetCellValue("robotframework自动化用例执行结果", fmt.Sprintf("B%d", next), value.Value)
 					fmt.Println("testName: ", value.Value)
 				}
 			}
@@ -41,26 +52,20 @@ func getTestInfo(e *etree.Element) {
 			testStatus := test.SelectElement("status")
 			for _, value := range testStatus.Attr {
 				if value.Key == "status" {
-					fmt.Println("testStatus: ", value.Value)
-
-					if value.Value == "FAIL" {
-						msg := testStatus.SelectElement("msg")
-						fmt.Println("msg: ", msg)
-					}
+					f.SetCellValue("robotframework自动化用例执行结果", fmt.Sprintf("C%d", next), value.Value)
 				}
 
 				if value.Key == "critical" {
-					fmt.Println("critical: ", value.Element().Text())
+					f.SetCellValue("robotframework自动化用例执行结果", fmt.Sprintf("D%d", next), value.Element().Text())
 				}
 			}
 		}
 	}
-
 	if len(suites) == 0 {
 		return
 	}
 
 	for _, v := range suites {
-		getTestInfo(v)
+		getTestInfo(v, f, n + 1)
 	}
 }
